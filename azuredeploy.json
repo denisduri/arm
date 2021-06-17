@@ -15,6 +15,24 @@
                 "description": "Specifies the location for all of the resources created by this template."
             }
         },
+        "vmName1": {
+           "type": "string",
+           "metadata": {
+               "description": "Name for the first VM."
+           }
+        },
+        "vmName2": {
+           "type": "string",
+           "metadata": {
+               "description": "Name for the Second VM."
+           }
+        },
+        "vmName3": {
+           "type": "string",
+           "metadata": {
+               "description": "Name for the 3rd VM."
+           }
+        },
         "adminUsername": {
             "type": "string",
             "metadata": {
@@ -45,14 +63,14 @@
         "lbBackendPoolName": "LoadBalancerBackEndPool",
         "lbBackendPoolNameOutbound": "LoadBalancerBackEndPoolOutbound",
         "lbProbeName": "loadBalancerHealthProbe",
-        "nsgName": "[concat(parameters('projectName'),'-nsg')]",
-        "vNetName": "[concat(parameters('projectName'),'-vnet')]",
-        "vNetAddressPrefix": "10.0.0.0/16",
+        "nsgName": "ArmNSG",
+        "vNetName": "ArmvNet",
+        "vNetAddressPrefix": "172.29.0.0/16",
         "vNetSubnetName": "BackendSubnet",
-        "vNetSubnetAddressPrefix": "10.0.0.0/24",
+        "vNetSubnetAddressPrefix": "172.29.0.0/24",
         "bastionName": "[concat(parameters('projectName'),'-bastion')]",
         "bastionSubnetName": "AzureBastionSubnet",
-        "vNetBastionSubnetAddressPrefix": "10.0.1.0/24",
+        "vNetBastionSubnetAddressPrefix": "172.29.0.0/24",
         "bastionPublicIPAddressName": "[concat(parameters('projectName'),'-bastionPublicIP')]",
         "vmStorageAccountType": "Premium_LRS"
     },
@@ -100,7 +118,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2020-06-01",
-            "name": "[concat(parameters('projectName'),'-vm', copyIndex(1), '/', 'InstallWebServer')]",
+            "name": "[concat(parameters('vmName1'), copyIndex(1), '/', 'InstallWebServer')]",
             "location": "[parameters('location')]",
             "copy": {
                 "name": "extensionCopy",
@@ -122,7 +140,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2020-06-01",
-            "name": "[concat(parameters('projectName'),'-vm', copyIndex(1))]",
+            "name": "[concat(parameters('vmName2'), copyIndex(1))]",
             "location": "[parameters('location')]",
             "zones": [
                 "[copyIndex(1)]"
@@ -160,7 +178,7 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[concat(parameters('projectName'),'-vm', copyIndex(1))]",
+                    "computerName": "[concat(parameters('vmName3'), copyIndex(1))]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
