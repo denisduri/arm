@@ -57,7 +57,7 @@
         "vNetSubnetName": "BackendSubnet",
         "vNetSubnetAddressPrefix": "172.29.0.0/24",
         "bastionName": "[concat(parameters('vmName1'),'-bastion')]",
-        "bastionSubnetName": "BastionSubnet",
+        "bastionSubnetName": "AzureBastionSubnet",
         "vNetBastionSubnetAddressPrefix": "172.29.1.0/24",
         "bastionPublicIPAddressName": "[concat(parameters('projectName'),'-bastionPublicIP')]",
         "vmStorageAccountType": "Premium_LRS"
