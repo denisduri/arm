@@ -56,7 +56,7 @@
         "vNetAddressPrefix": "172.29.0.0/16",
         "vNetSubnetName": "BackendSubnet",
         "vNetSubnetAddressPrefix": "172.29.0.0/24",
-        "bastionName": "[concat(parameters('projectName'),'-bastion')]",
+        "bastionName": "[concat(parameters('vmName1'),'-bastion')]",
         "bastionSubnetName": "BastionSubnet",
         "vNetBastionSubnetAddressPrefix": "172.29.1.0/24",
         "bastionPublicIPAddressName": "[concat(parameters('projectName'),'-bastionPublicIP')]",
