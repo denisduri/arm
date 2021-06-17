@@ -21,18 +21,6 @@
                "description": "Name for the first VM."
            }
         },
-        "vmName2": {
-           "type": "string",
-           "metadata": {
-               "description": "Name for the Second VM."
-           }
-        },
-        "vmName3": {
-           "type": "string",
-           "metadata": {
-               "description": "Name for the 3rd VM."
-           }
-        },
         "adminUsername": {
             "type": "string",
             "metadata": {
@@ -140,7 +128,7 @@
         {
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2020-06-01",
-            "name": "[concat(parameters('vmName2'), copyIndex(1))]",
+            "name": "[concat(parameters('vmName1'), copyIndex(1))]",
             "location": "[parameters('location')]",
             "zones": [
                 "[copyIndex(1)]"
@@ -178,7 +166,7 @@
                     ]
                 },
                 "osProfile": {
-                    "computerName": "[concat(parameters('vmName3'), copyIndex(1))]",
+                    "computerName": "[concat(parameters('vmName1'), copyIndex(1))]",
                     "adminUsername": "[parameters('adminUsername')]",
                     "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
