@@ -162,7 +162,7 @@
                 "publicIPAddressVersion": "IPv4",
                 "publicIPAllocationMethod": "Static"
             }
-        },
+        }
 
     ]
 }
