@@ -14,7 +14,7 @@
             "metadata": {
                 "description": "Specifies the location for all of the resources created by this template."
             }
-        },
+        }
     },
     "variables": {
         "lbName": "[concat(parameters('projectName'),'-lb')]",
